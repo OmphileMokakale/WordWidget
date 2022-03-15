@@ -17,16 +17,19 @@ let string = "";
    for (let i = 0; i < splitword.length; i++) {
        const element = splitword[i];
 
-       if( element.length > 5){
-          string += `sentence too long:  ${element}`
+       if( element.length > 4){
+          string += "<mark>"+element+"</mark>"
         message.innerHTML = element;
         console.log(element)
+        message.innerHTML = `Correct, the secret number is ${string}`;
       }
+      message.innerHTML = string;
+     
+      console.log(string)
       
     // else {
     //     message.innerHTML = "Type another sentence";
     // }
-
        
    }
 
