@@ -6,19 +6,21 @@ const message = document.querySelector('.results')
 
 function btnClicked() {
 
-    alert("New Number Generated!");
+    alert("Testing");
 
-    message.innerHTML = "Error, Number Cannot be smaller than 0";
+    // message.innerHTML = "Error, Number Cannot be smaller than 0";
 
 const Mywords = Words.value;
 const splitword = Mywords.split(" ");
+
+let string = "";
    for (let i = 0; i < splitword.length; i++) {
        const element = splitword[i];
 
        if( element.length > 5){
-          const results = splitword.push(element);
-        message.innerHTML = `sentence too long:  ${results}`;
-        console.log(results)
+          string += `sentence too long:  ${element}`
+        message.innerHTML = element;
+        console.log(element)
       }
       
     // else {
