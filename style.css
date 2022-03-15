@@ -1,0 +1,38 @@
+
+body {
+    background-color: #CDD93F;
+	color: rgb(8, 12, 11);
+	font-family: "Monaco, Times New Roman", Times, serif;
+	}
+	
+	.container {
+	width: 560px;
+	margin: auto;
+	text-align: center;
+	}
+	
+	.message{
+	margin-top: 1em;
+	}
+	h1{
+	margin-bottom: 2px;
+	}
+	
+	
+	
+	/* div {
+	border-radius: 15px;
+	border-style:ridge;
+	border-color: #96C9DC;
+	background-color: #96C9DC;
+	padding: 20px;
+	  } */
+	 
+	/*
+	.number_guess {
+	padding: 0.25em;
+	}
+	*/
+	
+	
+	
