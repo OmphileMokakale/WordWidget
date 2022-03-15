@@ -18,10 +18,7 @@ let string = "";
        const element = splitword[i];
 
        if( element.length > 4){
-          string += "<mark>"+element+"</mark>"
-        message.innerHTML = element;
-        console.log(element)
-        message.innerHTML = `Correct, the secret number is ${string}`;
+        string += "<mark>" + element + "</mark> "
       }
       message.innerHTML = string;
      
