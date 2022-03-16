@@ -36,8 +36,11 @@ let string = "";
 
        if( element.length > 4){
         string += "<mark>" + element + "</mark> "
+      }else{
+
+        string += element + " ";
       }
-      message.innerHTML = `5 Characters Or More :  ${string}`;
+  
     //   message.innerHTML = string;
      
      
@@ -50,6 +53,6 @@ let string = "";
    }
 
      
- 
+   message.innerHTML = `5 Characters Or More :  ${string}`;
 }
 button.addEventListener('click', btnClicked)
