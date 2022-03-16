@@ -26,8 +26,9 @@ const Mywords = Words.value;
 const splitword = Mywords.split(" ");
 
 var wordCount = Mywords.match(/(\w+)/g).length;
-NumberOfWords.innerHTML = wordCount;
-alert(wordCount);
+NumberOfWords.innerHTML = `Number Of Words : ${wordCount}`;
+// NumberOfWords.innerHTML = wordCount;
+// alert(wordCount);
 
 let string = "";
    for (let i = 0; i < splitword.length; i++) {
@@ -36,7 +37,8 @@ let string = "";
        if( element.length > 4){
         string += "<mark>" + element + "</mark> "
       }
-      message.innerHTML = string;
+      message.innerHTML = `4 Characters Or More :  ${string}`;
+    //   message.innerHTML = string;
      
      
       console.log(string)
