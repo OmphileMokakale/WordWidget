@@ -2,25 +2,16 @@ const Words = document.querySelector('.words')
 const button = document.querySelector('.button')
 const message = document.querySelector('.results')
 const NumberOfWords = document.querySelector('.noOfWords')
+const checkboxes = document.querySelectorAll('.checkbox');
 
 
 
 
 function btnClicked() {
 
-
-
-
-//     var str = "your long string with many words.";
-// var wordCount = str.match(/(\w+)/g).length;
-// alert(wordCount); //6
-
 //    \w+    between one and unlimited word characters
 //    /g     greedy - don't stop after the first match
 
-    // alert("Testing");
-
-    // message.innerHTML = "Error, Number Cannot be smaller than 0";
 
 const Mywords = Words.value;
 const splitword = Mywords.split(" ");
@@ -41,10 +32,14 @@ let string = "";
         string += element + " ";
       }
   
-    //   message.innerHTML = string;
+      if(checkbox){
+ //   message.innerHTML = string;
+ console.log(string)
+      }
+   
      
      
-      console.log(string)
+      
       
     // else {
     //     message.innerHTML = "Type another sentence";
@@ -55,4 +50,20 @@ let string = "";
      
    message.innerHTML = `5 Characters Or More :  ${string}`;
 }
+
+
+checkboxes.forEach(checkbox => {
+
+    checkbox.addEventListener('change', function() {
+
+        const id = this.dataset.inputId;
+
+        if (this.checked === true) {
+            document.getElementById(id).style.display = 'block';
+        } else {
+            document.getElementById(id).style.display = 'none';
+        }
+    });
+});
+
 button.addEventListener('click', btnClicked)
