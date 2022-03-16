@@ -2,10 +2,10 @@ const Words = document.querySelector('.words')
 const button = document.querySelector('.button')
 const message = document.querySelector('.results')
 const NumberOfWords = document.querySelector('.noOfWords')
-const checkboxes = document.querySelectorAll('.checkbox');
+const checkboxes = document.getElementById('checkbox');
 
 
-
+let string = "";
 
 function btnClicked() {
 
@@ -21,7 +21,7 @@ NumberOfWords.innerHTML = `Number Of Words : ${wordCount}`;
 // NumberOfWords.innerHTML = wordCount;
 // alert(wordCount);
 
-let string = "";
+
    for (let i = 0; i < splitword.length; i++) {
        const element = splitword[i];
 
@@ -32,19 +32,10 @@ let string = "";
         string += element + " ";
       }
   
-      if(checkbox){
  //   message.innerHTML = string;
  console.log(string)
-      }
+      
    
-     
-     
-      
-      
-    // else {
-    //     message.innerHTML = "Type another sentence";
-    // }
-       
    }
 
      
@@ -52,18 +43,27 @@ let string = "";
 }
 
 
-checkboxes.forEach(checkbox => {
+// checkboxes.forEach(checkbox => {
 
-    checkbox.addEventListener('change', function() {
+    checkboxes.addEventListener('click', function() {
+        let mySrting = " ";
+        const longestWords = Words.value.split(" ");
 
-        const id = this.dataset.inputId;
+        for (let i = 0; i < longestWords.length; i++) {
+            const element = longestWords[i];
 
-        if (this.checked === true) {
-            document.getElementById(id).style.display = 'block';
-        } else {
-            document.getElementById(id).style.display = 'none';
+            if (element.length > 4) {
+                mySrting += "<mark>" + element + "</mark> "
+                   }
+            
         }
+    message.innerHTML = `5 Characters Or More :  ${mySrting}`;
+     console.log(mySrting);
+
+        // if (this.checked === true) {
+        //     message.innerHTML = `5 Characters Or More :  ${string}`;
+        // }
     });
-});
+// });
 
 button.addEventListener('click', btnClicked)
