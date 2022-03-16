@@ -37,7 +37,7 @@ let string = "";
        if( element.length > 4){
         string += "<mark>" + element + "</mark> "
       }
-      message.innerHTML = `4 Characters Or More :  ${string}`;
+      message.innerHTML = `5 Characters Or More :  ${string}`;
     //   message.innerHTML = string;
      
      
