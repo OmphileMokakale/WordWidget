@@ -43,11 +43,20 @@ NumberOfWords.innerHTML = `Number Of Words : ${wordCount}`;
 }
 
 
+
 // checkboxes.forEach(checkbox => {
 
     checkboxes.addEventListener('click', function() {
         let mySrting = " ";
         const longestWords = Words.value.split(" ");
+
+        if (checkboxes.checked == true){
+            message.innerHTML = `5 Characters Or More :  ${mySrting}`;
+            console.log("true")
+          } else {
+            message.innerHTML = `5 Characters Or More :  ${longestWords}`;
+            console.log("false")
+          }
 
         for (let i = 0; i < longestWords.length; i++) {
             const element = longestWords[i];
@@ -58,12 +67,17 @@ NumberOfWords.innerHTML = `Number Of Words : ${wordCount}`;
             
         }
     message.innerHTML = `5 Characters Or More :  ${mySrting}`;
-     console.log(mySrting);
+     
 
-        // if (this.checked === true) {
-        //     message.innerHTML = `5 Characters Or More :  ${string}`;
-        // }
+        if (checkboxes === false) {
+            message.innerHTML = `5 Characters Or More :  ${mySrting}`;
+        }
     });
 // });
 
+
+
 button.addEventListener('click', btnClicked)
+
+
+
