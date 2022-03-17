@@ -39,12 +39,9 @@ NumberOfWords.innerHTML = `Number Of Words : ${wordCount}`;
    }
 
      
-   message.innerHTML = `5 Characters Or More :  ${string}`;
+   message.innerHTML = `5 Characters Or More :  ${string}, `;
 }
 
-
-
-// checkboxes.forEach(checkbox => {
 
     checkboxes.addEventListener('click', function() {
         let mySrting = " ";
@@ -74,15 +71,13 @@ NumberOfWords.innerHTML = `Number Of Words : ${wordCount}`;
         }
           
           }
-
        
     message.innerHTML = `5 Characters Or More :  ${mySrting}`;
      
-
     });
 
 
-
+    
 
 button.addEventListener('click', btnClicked)
 
