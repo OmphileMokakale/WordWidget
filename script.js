@@ -51,29 +51,36 @@ NumberOfWords.innerHTML = `Number Of Words : ${wordCount}`;
         const longestWords = Words.value.split(" ");
 
         if (checkboxes.checked == true){
-            message.innerHTML = `5 Characters Or More :  ${mySrting}`;
-            console.log("true")
-          } else {
-            message.innerHTML = `5 Characters Or More :  ${longestWords}`;
-            console.log("false")
+            for (let i = 0; i < longestWords.length; i++) {
+                const element = longestWords[i];
+    
+                if (element.length > 4) {
+                    mySrting += "<mark>" + element + "</mark> "
+                       }
+            }
+            console.log(mySrting)
+          } else { 
+
+            for (let i = 0; i < longestWords.length; i++) {
+            const element = longestWords[i];
+     
+            if( element.length > 4){
+                mySrting += "<mark>" + element + "</mark> "
+           }else{
+     
+            mySrting += element + " ";
+           }
+        
+        }
+          
           }
 
-        for (let i = 0; i < longestWords.length; i++) {
-            const element = longestWords[i];
-
-            if (element.length > 4) {
-                mySrting += "<mark>" + element + "</mark> "
-                   }
-            
-        }
+       
     message.innerHTML = `5 Characters Or More :  ${mySrting}`;
      
 
-        if (checkboxes === false) {
-            message.innerHTML = `5 Characters Or More :  ${mySrting}`;
-        }
     });
-// });
+
 
 
 
