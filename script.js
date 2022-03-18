@@ -1,45 +1,46 @@
 const Words = document.querySelector('.words')
 const button = document.querySelector('.button')
 const message = document.querySelector('.results')
+const sentences = document.querySelector('.list')
 const NumberOfWords = document.querySelector('.noOfWords')
 const checkboxes = document.getElementById('checkbox');
 
 
-let string = "";
 
+let prevSentences = [];
 function btnClicked() {
-
-//    \w+    between one and unlimited word characters
-//    /g     greedy - don't stop after the first match
-
-
 const Mywords = Words.value;
 const splitword = Mywords.split(" ");
+let string = "";
+
 
 var wordCount = Mywords.match(/(\w+)/g).length;
 NumberOfWords.innerHTML = `Number Of Words : ${wordCount}`;
-// NumberOfWords.innerHTML = wordCount;
-// alert(wordCount);
+
 
 
    for (let i = 0; i < splitword.length; i++) {
        const element = splitword[i];
 
-       if( element.length > 4){
+       if( element.length >= 5){
         string += "<mark>" + element + "</mark> "
-      }else{
-
-        string += element + " ";
+       }
+      // else if(element.length > 6){
+        
+      //   string += '<span style="color: orange;">' + element + '</span>'
+      //  }
+      
+      else{
+       
+     string += element + " ";
       }
   
- //   message.innerHTML = string;
- console.log(string)
-      
-   
    }
-
+   prevSentences.push(string)
      
-   message.innerHTML = `5 Characters Or More :  ${string}, `;
+   message.innerHTML = `5 Characters Or More :  ${string}`;
+  sentences.innerHTML = `Last 5 sentences :  ${prevSentences}`;
+   
 }
 
 
