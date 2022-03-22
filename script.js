@@ -40,9 +40,12 @@ wordList.forEach((word, index) => {
     
   }
 });
+const longestWords = wordList.filter(word => word.length === longestWord.length);
+wordList[longestWord.index].type = '<span style="color: orange;">' + longestWords + '</span>'
 
 
-console.log(wordList)
+
+console.log(longestWords)
 
 
    for (let i = 0; i < splitword.length; i++) {
