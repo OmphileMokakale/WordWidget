@@ -20,6 +20,29 @@ let string = "";
 var wordCount = Mywords.match(/(\w+)/g).length;
 NumberOfWords.innerHTML = `Number Of Words : ${wordCount}`;
 
+const wordList = splitword.map(word =>{
+  return{
+    word,
+    length: word.length,
+    type: word.length > 4 ? "longer" : ""
+  }
+})
+
+
+let longestWord ={
+  length: 0
+}
+
+wordList.forEach((word, index) => {
+  if (word.length > longestWord.length) {
+    
+    longestWord = {...word,index}
+    
+  }
+});
+
+
+console.log(wordList)
 
 
    for (let i = 0; i < splitword.length; i++) {
