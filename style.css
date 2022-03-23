@@ -11,6 +11,9 @@ color: rgb(8, 12, 11);
 font-family: "Lucida Console", "Courier New", monospace;
 
 	}
+	#checkbox{
+		height: 1em;
+	}
 	
 	.imgages{
 		height: 5px;
