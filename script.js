@@ -83,7 +83,7 @@ const wordList = splitword.map(word =>{    //loop over the words
    prevSentences.push(string)
 
    if( prevSentences.length <=5){
-    sentences.innerHTML = `Last 5 sentences :  ${prevSentences}`;
+    sentences.innerHTML = `Last 5 sentences :  ${prevSentences} `;  
    }
    
   //  if it's average word length is higher
