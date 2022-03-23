@@ -4,6 +4,7 @@ const message = document.querySelector('.results')
 const sentences = document.querySelector('.list')
 const NumberOfWords = document.querySelector('.noOfWords')
 const checkboxes = document.getElementById('checkbox');
+const myType = document.querySelector('.longest')
 
 
 
@@ -20,33 +21,36 @@ let string = "";
 var wordCount = Mywords.match(/(\w+)/g).length;
 NumberOfWords.innerHTML = `Number Of Words : ${wordCount}`;
 
-const wordList = splitword.map(word =>{
+//decoupling the value/sentence entered
+const wordList = splitword.map(word =>{    //loop over the words
   return{
     word,
-    length: word.length,
-    type: word.length > 4 ? "longer" : ""
+    length: word.length,  //gets the word length
+    type: word.length > 4 ? "longer" : "" //checks for words longer than 4 characters
   }
 })
 
 
-let longestWord ={
-  length: 0
-}
 
-wordList.forEach((word, index) => {
-  if (word.length > longestWord.length) {
-    
-    longestWord = {...word,index}
-    
+  let longestWord ={
+    length: 0
   }
-});
-const longestWords = wordList.filter(word => word.length === longestWord.length);
-wordList[longestWord.index].type = '<span style="color: orange;">' + longestWords + '</span>'
-
-
-
-console.log(longestWords)
-
+  
+  wordList.forEach((word, index) => {
+    if (word.length > longestWord.length) {
+      
+      longestWord = {...word,index}
+      
+    }
+  });
+  
+  //
+ const trr = wordList[longestWord.index].word
+ 
+  const longestWords = wordList.filter(word => word.length === longestWord.length);
+  myType.innerHTML = `Longest Word : <span style="background-color: orange;"> ${trr} </span>`;
+  console.log(longestWords)
+  
 
    for (let i = 0; i < splitword.length; i++) {
        const element = splitword[i];
@@ -83,19 +87,8 @@ console.log(longestWords)
      
    message.innerHTML = `5 Characters Or More :  ${string}`;
   
-
-  // if (string.length <= 5) {
-  //   sentences.innerHTML = `Last 5 sentences :  ${prevSentences}`;
-  // }
-
- 
    
 }
-
-
-
-
-
 
     checkboxes.addEventListener('click', function() {
         let mySrting = " ";
