@@ -48,33 +48,38 @@ const wordList = splitword.map(word =>{    //loop over the words
  const trr = wordList[longestWord.index].word
  
   const longestWords = wordList.filter(word => word.length === longestWord.length);
-  myType.innerHTML = `Longest Word : <span style="background-color: orange;"> ${trr} </span>`;
+  myType.innerHTML = `Longest Word : <span style="background-color: green;"> ${trr} </span>`;
   console.log(longestWords)
   
 
    for (let i = 0; i < splitword.length; i++) {
        const element = splitword[i];
 
-       var aveLength = " ";
-
        if( element.length >= 5){
         string += "<mark>" + element + "</mark> "
+       
 
-        if (element.length > string.length) {
-          console.log(string)
-          aveLength += '<span style="color: orange;">' + element + '</span>'
+        if(element.length<trr.length){
+
+          // message.innerHTML = `<span style="color: orange;">  ${trr} </span>`;
+         
+         string += '<span style="color: orange;">' + trr + '</span>'
         }
+        // console.log(element)
+
+        // if (element.length > string.length) {
+        //   console.log(string)
+        //   aveLength += '<span style="color: orange;">' + element + '</span>'
+        // }
        }
-      // else if(element.length > 6){
-        
-      //   string += '<span style="color: orange;">' + element + '</span>'
-      //  }  
+     
       else{
        
      string += element + " ";
       }
   
    }
+   
    prevSentences.push(string)
 
    if( prevSentences.length <=5){
