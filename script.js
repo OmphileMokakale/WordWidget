@@ -57,10 +57,10 @@ const wordList = splitword.map(word =>{    //loop over the words
        if( element.length >= 5){
        
         if(element.length >= theWord.length){
-         string += '<span style="background-color: green;">' + element + '</span>'
+         string += "<mark style = 'background-color: green'>" + element + "</mark> "
         } 
         else{
-          string += '<span style="background-color: orange;">' + element + '</span>'
+          string += "<mark style = 'background-color: orange'>" + element + "</mark> "
           // string += "<mark>" + element + "</mark> "
         }
         // console.log(element)
@@ -91,12 +91,16 @@ const wordList = splitword.map(word =>{    //loop over the words
         let mySrting = " ";
         const longestWords = Words.value.split(" ");
 
+
+
+
         if (checkboxes.checked == true){
             for (let i = 0; i < longestWords.length; i++) {
                 const element = longestWords[i];
     
                 if (element.length > 4) {
-                    mySrting += "<mark>" + element + "</mark> "
+                  // mySrting += '<span style="background-color: orange;">' + element + "" +'</span>'
+                    mySrting += "<mark style = 'background-color: orange'>" + element + "</mark> "
                        }
             }
             console.log(mySrting)
@@ -106,7 +110,8 @@ const wordList = splitword.map(word =>{    //loop over the words
             const element = longestWords[i];
      
             if( element.length > 4){
-                mySrting += "<mark>" + element + "</mark> "
+                // mySrting += "<mark>" + element + "</mark> "
+                mySrting += "<mark style = 'background-color: orange'>" + element + "</mark> "
            }else{
      
             mySrting += element + " ";
