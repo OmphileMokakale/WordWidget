@@ -73,11 +73,24 @@ const wordList = splitword.map(word =>{    //loop over the words
    }
    
    prevSentences.push(string)
+   if (localStorage['previous']) {
+  sentences.innerHTML = `Last 5 sentences :  ${prevSentences} `;
+  }
+  else{
+    if( prevSentences.length <=5){
+      // const newSentence = 
+      localStorage['previous'] =  sentences.innerHTML = `Last 5 sentences :  ${prevSentences} `;  
+     }
 
-   if( prevSentences.length <=5){
-    sentences.innerHTML = `Last 5 sentences :  ${prevSentences} `;  
-   }
+
+
+    //  const theNumber = Math.round(Math.random() * 10);
+  
+    //  localStorage['theNumber']= theNumber;
+  }
+   
       
+   
    message.innerHTML = `5 Characters Or More :  ${string}`;
   
    
@@ -96,8 +109,8 @@ const wordList = splitword.map(word =>{    //loop over the words
     
                 if (element.length > 4) {
                   // mySrting += '<span style="background-color: orange;">' + element + "" +'</span>'
-                    mySrting += "<mark style = 'background-color: orange'>" + element + "</mark> "
-                       }
+                    mySrting += "<mark style = 'background-color: orange'>" + element + "</mark> "   
+                  }
             }
             console.log(mySrting)
           } else { 
@@ -126,10 +139,28 @@ const wordList = splitword.map(word =>{    //loop over the words
 
 button.addEventListener('click', btnClicked)
 
+if (localStorage['theNumber']) {
+  document.querySelector(".number").innerHTML = localStorage['theNumber'];
+}else{
+  const theNumber = Math.round(Math.random() * 10);
+  
+  localStorage['theNumber']= theNumber;
+}
+// const theNumber = Math.random(Math.round() * 10);
+// document.querySelector(".number").innerHTML = theNumber;
 
-const theNumber = Math.random(Math.round() * 10);
 
-document.querySelector(".number").innerHTML = theNumber;
-
-localStorage['theNumber'] = theNumber;
 // console.log(localStorage);
+
+
+
+var rangeSlider = document.getElementById("rs-range-line");
+var rangeBullet = document.getElementById("rs-bullet");
+
+rangeSlider.addEventListener("input", showSliderValue, false);
+
+function showSliderValue() {
+  rangeBullet.innerHTML = rangeSlider.value;
+  var bulletPosition = (rangeSlider.value /rangeSlider.max);
+  rangeBullet.style.left = (bulletPosition * 578) + "px";
+}
