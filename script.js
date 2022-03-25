@@ -77,11 +77,7 @@ const wordList = splitword.map(word =>{    //loop over the words
    if( prevSentences.length <=5){
     sentences.innerHTML = `Last 5 sentences :  ${prevSentences} `;  
    }
-   
-  //  if it's average word length is higher
-  //  or lower than the last 5 sentences
-  //  green dot if higher and an orange dot if lower
-     
+      
    message.innerHTML = `5 Characters Or More :  ${string}`;
   
    
@@ -131,4 +127,9 @@ const wordList = splitword.map(word =>{    //loop over the words
 button.addEventListener('click', btnClicked)
 
 
+const theNumber = Math.random(Math.round() * 10);
 
+document.querySelector(".number").innerHTML = theNumber;
+
+localStorage['theNumber'] = theNumber;
+// console.log(localStorage);
