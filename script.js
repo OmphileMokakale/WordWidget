@@ -4,17 +4,44 @@ const message = document.querySelector('.results')
 const sentences = document.querySelector('.list')
 const NumberOfWords = document.querySelector('.noOfWords')
 const checkboxes = document.getElementById('checkbox');
-const myType = document.querySelector('.longest')
+
 
 
 
 let prevSentences = [];
+let setSetence = [];
+
+var rangeslider = document.getElementById("sliderRange");
+var output = document.getElementById("demo");
+output.innerHTML = rangeslider.value;
+
+
+rangeslider.oninput = function () {
+  output.innerHTML = this.value;
+  return this.value;
+}
+
+
+
+// function passFromValue(){
+//   var x = 15;
+//   return x;  
+// }
+
+// function passToValue() {
+//   var y = passFromValue();
+//   console.log(y);//15
+// }
+// passToValue(); 
+
 
 
 function btnClicked() {
-
-
+  var y = rangeslider.oninput();
+  console.log(y);
+ 
 const Mywords = Words.value;
+
 const splitword = Mywords.split(" ");
 let string = "";
 
@@ -30,8 +57,7 @@ const wordList = splitword.map(word =>{    //loop over the words
   }
 })
 
-
-
+//longest word
   let longestWord ={
     length: 0
   }
@@ -43,16 +69,16 @@ const wordList = splitword.map(word =>{    //loop over the words
       
     }
   });
+
   const theWord = wordList[longestWord.index].word
  
   const longestWords = wordList.filter(word => word.length === longestWord.length);
-  // myType.innerHTML = `Longest Word : <span style="background-color: green;"> ${theWord} </span>`;
-  console.log(longestWords)
-  
+
    for (let i = 0; i < splitword.length; i++) {
        const element = splitword[i];
 
-       if( element.length >= 5){
+       if( element.length == y){
+        
        
         if(element.length >= theWord.length){
          string += "<mark style = 'background-color: green; font-weight: bold'>" + element + "</mark> "
@@ -79,27 +105,18 @@ const wordList = splitword.map(word =>{    //loop over the words
       // const newSentence = 
       localStorage['previous'] =  sentences.innerHTML = `Last 5 sentences :  ${prevSentences} `;  
      }
-
-
-
     //  const theNumber = Math.round(Math.random() * 10);
   
     //  localStorage['theNumber']= theNumber;
-  }
-   
-      
-   
+  }    
    message.innerHTML = `5 Characters Or More :  ${string}`;
    
 
 
-   
+   //CheckBpx
    checkboxes.addEventListener('click', function() {
     let mySrting = " ";
     const longestWords = Words.value.split(" ");
-
-
-    //checkBox
 
     if (checkboxes.checked == true){
         for (let i = 0; i < longestWords.length; i++) {
@@ -112,7 +129,7 @@ const wordList = splitword.map(word =>{    //loop over the words
                 mySrting += "<mark style = 'background-color: green; font-weight: bold'>" + element + "</mark> "
               } 
         }
-        console.log(mySrting)
+        // console.log(mySrting)
       } else { 
 
         for (let i = 0; i < longestWords.length; i++) {
@@ -128,25 +145,26 @@ const wordList = splitword.map(word =>{    //loop over the words
             // string += "<mark>" + element + "</mark> "
           }
           // console.log(element)
-         }
-       
+         }     
         else{ 
           mySrting += element + " ";
-        }
-    
-    }
-      
+        }    
+    }      
       }
    
 message.innerHTML = `5 Characters Or More :  ${mySrting}`;
- 
+
 });
    
 }
-
-
-
     
+//set the value of the length of word
+//if the length of words is equals to the value of the slider change the color of words to orange
+
+
+rangeslider.oninput(); //calling a function
+
+ 
 
 button.addEventListener('click', btnClicked)
 
@@ -158,10 +176,3 @@ if (localStorage['theNumber']) {
   localStorage['theNumber']= theNumber;
 }
 
-var rangeslider = document.getElementById("sliderRange");
-var output = document.getElementById("demo");
-output.innerHTML = rangeslider.value;
-  
-rangeslider.oninput = function() {
-  output.innerHTML = this.value;
-}

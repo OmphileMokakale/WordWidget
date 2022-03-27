@@ -17,6 +17,8 @@ font-family: 'Chilanka', cursive;
 	}
 	#checkbox{
 		height: 1em;
+		padding: 5em;
+		size: 15%;
 	}
 	
 	.imgages{
