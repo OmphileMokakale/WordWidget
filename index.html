@@ -27,14 +27,18 @@
 <br>
 
     <H4 style="text-align: center; text-decoration:underline;">Set number of characters</H4>
+    <p>Use the slider to increment or decrement the number of Characters.</p>
+      
+    <div class="rangeslider">
+      <input type="range" min="1" max="100" value="10"
+                      class="myslider" id="sliderRange">
+      <h5>Character(s): <span id="demo"></span></h5>
+    </div>
   
     </div>
     
-    <div class="slider">
-        <input type="range" min="0" max="100" value="10"  
-         oninput="rangeValue.innerText = this.value">
-        <p id="rangeValue">10</p>
-      </div>
+    
+  
 
    <div class="myResults">
     <div class="results">

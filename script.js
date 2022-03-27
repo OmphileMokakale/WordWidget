@@ -157,9 +157,11 @@ if (localStorage['theNumber']) {
   
   localStorage['theNumber']= theNumber;
 }
-// const theNumber = Math.random(Math.round() * 10);
-// document.querySelector(".number").innerHTML = theNumber;
 
-
-// console.log(localStorage);
-
+var rangeslider = document.getElementById("sliderRange");
+var output = document.getElementById("demo");
+output.innerHTML = rangeslider.value;
+  
+rangeslider.oninput = function() {
+  output.innerHTML = this.value;
+}
