@@ -19,7 +19,7 @@ const splitword = Mywords.split(" ");
 let string = "";
 
 var wordCount = Mywords.match(/(\w+)/g).length;
-NumberOfWords.innerHTML = `Number Of Words : ${wordCount}`;
+NumberOfWords.innerHTML = `<b>Nuber of words: There are ${wordCount} words in a sentence </b> `;
 
 //decoupling the value/sentence entered
 const wordList = splitword.map(word =>{    //loop over the words
@@ -43,8 +43,6 @@ const wordList = splitword.map(word =>{    //loop over the words
       
     }
   });
-  
-  //
   const theWord = wordList[longestWord.index].word
  
   const longestWords = wordList.filter(word => word.length === longestWord.length);
@@ -57,7 +55,7 @@ const wordList = splitword.map(word =>{    //loop over the words
        if( element.length >= 5){
        
         if(element.length >= theWord.length){
-         string += "<mark style = 'background-color: green'>" + element + "</mark> "
+         string += "<mark style = 'background-color: green; font-weight: bold'>" + element + "</mark> "
         } 
         else{
           string += "<mark style = 'background-color: orange'>" + element + "</mark> "
@@ -92,47 +90,60 @@ const wordList = splitword.map(word =>{    //loop over the words
       
    
    message.innerHTML = `5 Characters Or More :  ${string}`;
-  
+   
+
+
+   
+   checkboxes.addEventListener('click', function() {
+    let mySrting = " ";
+    const longestWords = Words.value.split(" ");
+
+
+    //checkBox
+
+    if (checkboxes.checked == true){
+        for (let i = 0; i < longestWords.length; i++) {
+            const element = longestWords[i];
+
+            if (element.length > 4) {
+              // mySrting += '<span style="background-color: orange;">' + element + "" +'</span>'
+                mySrting += "<mark style = 'background-color: orange'>" + element + "</mark> "   
+              } if(element.length >= theWord.length){
+                mySrting += "<mark style = 'background-color: green; font-weight: bold'>" + element + "</mark> "
+              } 
+        }
+        console.log(mySrting)
+      } else { 
+
+        for (let i = 0; i < longestWords.length; i++) {
+        const element = longestWords[i];
+ 
+        if( element.length >= 5){
+   
+          if(element.length >= theWord.length){
+            mySrting += "<mark style = 'background-color: green; font-weight: bold'>" + element + "</mark> "
+          } 
+          else{
+            mySrting += "<mark style = 'background-color: orange'>" + element + "</mark> "
+            // string += "<mark>" + element + "</mark> "
+          }
+          // console.log(element)
+         }
+       
+        else{ 
+          mySrting += element + " ";
+        }
+    
+    }
+      
+      }
+   
+message.innerHTML = `5 Characters Or More :  ${mySrting}`;
+ 
+});
    
 }
 
-    checkboxes.addEventListener('click', function() {
-        let mySrting = " ";
-        const longestWords = Words.value.split(" ");
-
-
-
-
-        if (checkboxes.checked == true){
-            for (let i = 0; i < longestWords.length; i++) {
-                const element = longestWords[i];
-    
-                if (element.length > 4) {
-                  // mySrting += '<span style="background-color: orange;">' + element + "" +'</span>'
-                    mySrting += "<mark style = 'background-color: orange'>" + element + "</mark> "   
-                  }
-            }
-            console.log(mySrting)
-          } else { 
-
-            for (let i = 0; i < longestWords.length; i++) {
-            const element = longestWords[i];
-     
-            if( element.length > 4){
-                // mySrting += "<mark>" + element + "</mark> "
-                mySrting += "<mark style = 'background-color: orange'>" + element + "</mark> "
-           }else{
-     
-            mySrting += element + " ";
-           }
-        
-        }
-          
-          }
-       
-    message.innerHTML = `5 Characters Or More :  ${mySrting}`;
-     
-    });
 
 
     
@@ -152,15 +163,3 @@ if (localStorage['theNumber']) {
 
 // console.log(localStorage);
 
-
-
-var rangeSlider = document.getElementById("rs-range-line");
-var rangeBullet = document.getElementById("rs-bullet");
-
-rangeSlider.addEventListener("input", showSliderValue, false);
-
-function showSliderValue() {
-  rangeBullet.innerHTML = rangeSlider.value;
-  var bulletPosition = (rangeSlider.value /rangeSlider.max);
-  rangeBullet.style.left = (bulletPosition * 578) + "px";
-}
