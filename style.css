@@ -1,6 +1,6 @@
 
 body {
-background-color: #CDD93F;
+background-color: #9BC1BC;
 background-image: url(img.png);
 padding: 25px;
 background-repeat: no-repeat;
@@ -18,7 +18,7 @@ font-family: 'Chilanka', cursive;
 	#checkbox{
 		height: 1em;
 		padding: 5em;
-		size: 15%;
+		
 	}
 	
 	.imgages{
