@@ -77,18 +77,12 @@ const wordList = splitword.map(word =>{    //loop over the words
    for (let i = 0; i < splitword.length; i++) {
        const element = splitword[i];
 
-       if( element.length == y){
-        
-       
-        if(element.length >= theWord.length){
-         string += "<mark style = 'background-color: green; font-weight: bold'>" + element + "</mark> "
+       if (element.length == y) {
+        // mySrting += '<span style="background-color: orange;">' + element + "" +'</span>'
+        string += "<mark style = 'background-color: orange'>" + element + "</mark> "   
+        } if(element.length >= theWord.length){
+          string += "<mark style = 'background-color: green; font-weight: bold'>" + element + "</mark> "
         } 
-        else{
-          string += "<mark style = 'background-color: orange'>" + element + "</mark> "
-          // string += "<mark>" + element + "</mark> "
-        }
-        // console.log(element)
-       }
      
       else{ 
      string += element + " ";
@@ -97,19 +91,19 @@ const wordList = splitword.map(word =>{    //loop over the words
    }
    
    prevSentences.push(string)
-   if (localStorage['previous']) {
-  sentences.innerHTML = `Last 5 sentences :  ${prevSentences} `;
-  }
-  else{
+  //  if (localStorage['previous']) {
+  // sentences.innerHTML = `Last 5 sentences :  ${prevSentences} `;
+  // // }
+  // else{
     if( prevSentences.length <=5){
       // const newSentence = 
-      localStorage['previous'] =  sentences.innerHTML = `Last 5 sentences :  ${prevSentences} `;  
-     }
+     sentences.innerHTML = `Last 5 sentences :  ${prevSentences} `;  
+    //  }
     //  const theNumber = Math.round(Math.random() * 10);
   
     //  localStorage['theNumber']= theNumber;
   }    
-   message.innerHTML = `5 Characters Or More :  ${string}`;
+   message.innerHTML = ` <b>${y}</b> Characters Or More :  ${string}`;
    
 
 
@@ -122,7 +116,7 @@ const wordList = splitword.map(word =>{    //loop over the words
         for (let i = 0; i < longestWords.length; i++) {
             const element = longestWords[i];
 
-            if (element.length > 4) {
+            if (element.length == y) {
               // mySrting += '<span style="background-color: orange;">' + element + "" +'</span>'
                 mySrting += "<mark style = 'background-color: orange'>" + element + "</mark> "   
               } if(element.length >= theWord.length){
@@ -132,24 +126,21 @@ const wordList = splitword.map(word =>{    //loop over the words
         // console.log(mySrting)
       } else { 
 
-        for (let i = 0; i < longestWords.length; i++) {
-        const element = longestWords[i];
- 
-        if( element.length >= 5){
+        for (let i = 0; i < splitword.length; i++) {
+          const element = splitword[i];
    
-          if(element.length >= theWord.length){
+          if (element.length == y) {
+           // mySrting += '<span style="background-color: orange;">' + element + "" +'</span>'
+           mySrting += "<mark style = 'background-color: orange'>" + element + "</mark> "   
+           } if(element.length >= theWord.length){
             mySrting += "<mark style = 'background-color: green; font-weight: bold'>" + element + "</mark> "
-          } 
-          else{
-            mySrting += "<mark style = 'background-color: orange'>" + element + "</mark> "
-            // string += "<mark>" + element + "</mark> "
-          }
-          // console.log(element)
-         }     
-        else{ 
+           } 
+        
+         else{ 
           mySrting += element + " ";
-        }    
-    }      
+         }
+     
+      }      
       }
    
 message.innerHTML = `5 Characters Or More :  ${mySrting}`;
