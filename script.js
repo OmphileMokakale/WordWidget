@@ -79,7 +79,7 @@ const wordList = splitword.map(word =>{    //loop over the words
 
        if (element.length == y) {
         // mySrting += '<span style="background-color: orange;">' + element + "" +'</span>'
-        string += "<mark style = 'background-color: orange'>" + element + "</mark> "   
+        string += "<mark style = 'background-color: orange; font-weight: bold'>" + element + "</mark> "   
         } if(element.length >= theWord.length){
           string += "<mark style = 'background-color: green; font-weight: bold'>" + element + "</mark> "
         } 
