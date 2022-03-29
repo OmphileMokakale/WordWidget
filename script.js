@@ -9,7 +9,6 @@ const checkboxes = document.getElementById('checkbox');
 
 
 let prevSentences = [];
-let setSetence = [];
 
 var rangeslider = document.getElementById("sliderRange");
 var output = document.getElementById("demo");
@@ -23,147 +22,152 @@ rangeslider.oninput = function () {
 
 
 
-// function passFromValue(){
-//   var x = 15;
-//   return x;  
-// }
-
-// function passToValue() {
-//   var y = passFromValue();
-//   console.log(y);//15
-// }
-// passToValue(); 
-
-
-
 function btnClicked() {
   var y = rangeslider.oninput();
   console.log(y);
- 
-const Mywords = Words.value;
 
-const splitword = Mywords.split(" ");
-let string = "";
+  const Mywords = Words.value;
 
-var wordCount = Mywords.match(/(\w+)/g).length;
-NumberOfWords.innerHTML = `<b>Nuber of words: There are ${wordCount} words in a sentence </b> `;
+  const splitword = Mywords.split(" ");
+  let string = "";
 
-//decoupling the value/sentence entered
-const wordList = splitword.map(word =>{    //loop over the words
-  return{
-    word,
-    length: word.length,  //gets the word length
-    type: word.length > 4 ? "longer" : "" //checks for words longer than 4 characters
-  }
-})
+  var wordCount = Mywords.match(/(\w+)/g).length;
+  NumberOfWords.innerHTML = `<b>Nuber of words: There are ${wordCount} words in a sentence </b> `;
 
-//longest word
-  let longestWord ={
+  //decoupling the value/sentence entered
+  const wordList = splitword.map(word => {    //loop over the words
+    return {
+      word,
+      length: word.length,  //gets the word length
+      type: word.length > 4 ? "longer" : "" //checks for words longer than 4 characters
+    }
+  })
+
+  //longest word
+  let longestWord = {
     length: 0
   }
-  
+
   wordList.forEach((word, index) => {
     if (word.length > longestWord.length) {
-      
-      longestWord = {...word,index}
-      
+
+      longestWord = { ...word, index }
+
     }
   });
 
   const theWord = wordList[longestWord.index].word
- 
+
   const longestWords = wordList.filter(word => word.length === longestWord.length);
 
-   for (let i = 0; i < splitword.length; i++) {
-       const element = splitword[i];
+  for (let i = 0; i < splitword.length; i++) {
+    const element = splitword[i];
 
-       if (element.length == y) {
-        // mySrting += '<span style="background-color: orange;">' + element + "" +'</span>'
-        string += "<mark style = 'background-color: orange; font-weight: bold'>" + element + "</mark> "   
-        } if(element.length >= theWord.length){
-          string += "<mark style = 'background-color: green; font-weight: bold'>" + element + "</mark> "
-        } 
-     
-      else{ 
-     string += element + " ";
-      }
-  
-   }
-   
-   prevSentences.push(string)
-  //  if (localStorage['previous']) {
-  // sentences.innerHTML = `Last 5 sentences :  ${prevSentences} `;
-  // // }
-  // else{
-    if( prevSentences.length <=5){
-      // const newSentence = 
-     sentences.innerHTML = `Last 5 sentences :  ${prevSentences} `;  
-    //  }
-    //  const theNumber = Math.round(Math.random() * 10);
-  
-    //  localStorage['theNumber']= theNumber;
-  }    
-   message.innerHTML = ` <b>${y}</b> Characters Or More :  ${string}`;
-   
+    if (element.length == y) {
+      // mySrting += '<span style="background-color: orange;">' + element + "" +'</span>'
+      string += "<mark style = 'background-color: orange; font-weight: bold'>" + element + "</mark> "
+    } if (element.length >= theWord.length) {
+      string += "<mark style = 'background-color: green; font-weight: bold'>" + element + "</mark> "
+    }
+
+    else {
+      string += element + " ";
+    }
+  }
 
 
-   //CheckBpx
-   checkboxes.addEventListener('click', function() {
+  prevSentences.push(string)
+
+  if (prevSentences.length <= 5) {
+
+    sentences.innerHTML = `Last 5 sentences :  ${prevSentences} `;
+  }
+  message.innerHTML = ` <b>${y}</b> Characters Or More :  ${string}`;
+
+
+
+  //CheckBox
+  checkboxes.addEventListener('click', function () {
     let mySrting = " ";
     const longestWords = Words.value.split(" ");
 
-    if (checkboxes.checked == true){
-        for (let i = 0; i < longestWords.length; i++) {
-            const element = longestWords[i];
+    if (checkboxes.checked == true) {
+      for (let i = 0; i < longestWords.length; i++) {
+        const element = longestWords[i];
 
-            if (element.length == y) {
-              // mySrting += '<span style="background-color: orange;">' + element + "" +'</span>'
-                mySrting += "<mark style = 'background-color: orange'>" + element + "</mark> "   
-              } if(element.length >= theWord.length){
-                mySrting += "<mark style = 'background-color: green; font-weight: bold'>" + element + "</mark> "
-              } 
+        if (element.length == y) {
+          // mySrting += '<span style="background-color: orange;">' + element + "" +'</span>'
+          mySrting += "<mark style = 'background-color: orange'>" + element + "</mark> "
+        } if (element.length >= theWord.length) {
+          mySrting += "<mark style = 'background-color: green; font-weight: bold'>" + element + "</mark> "
         }
-        // console.log(mySrting)
-      } else { 
-
-        for (let i = 0; i < splitword.length; i++) {
-          const element = splitword[i];
-   
-          if (element.length == y) {
-           // mySrting += '<span style="background-color: orange;">' + element + "" +'</span>'
-           mySrting += "<mark style = 'background-color: orange'>" + element + "</mark> "   
-           } if(element.length >= theWord.length){
-            mySrting += "<mark style = 'background-color: green; font-weight: bold'>" + element + "</mark> "
-           } 
-        
-         else{ 
-          mySrting += element + " ";
-         }
-     
-      }      
       }
-   
-message.innerHTML = `5 Characters Or More :  ${mySrting}`;
+      // console.log(mySrting)
+    } else {
 
-});
-   
+      for (let i = 0; i < splitword.length; i++) {
+        const element = splitword[i];
+
+        if (element.length == y) {
+          // mySrting += '<span style="background-color: orange;">' + element + "" +'</span>'
+          mySrting += "<mark style = 'background-color: orange'>" + element + "</mark> "
+        } if (element.length >= theWord.length) {
+          mySrting += "<mark style = 'background-color: green; font-weight: bold'>" + element + "</mark> "
+        }
+
+        else {
+          mySrting += element + " ";
+        }
+
+      }
+    }
+
+    message.innerHTML = `5 Characters Or More : <br> ${mySrting}`;
+
+  });
+
 }
-    
+
 //set the value of the length of word
 //if the length of words is equals to the value of the slider change the color of words to orange
 
 
 rangeslider.oninput(); //calling a function
 
- 
+
 
 button.addEventListener('click', btnClicked)
 
+
+theNumber = 0;
+
 if (localStorage['theNumber']) {
-  document.querySelector(".number").innerHTML = localStorage['theNumber'];
-}else{
-  const theNumber = Math.round(Math.random() * 10);
-  
-  localStorage['theNumber']= theNumber;
+
+  localStorage['theNumber'] = theNumber;
+}
+//else{
+//   const theNumber = Math.round(Math.random() * 10);
+
+//   localStorage['theNumber']= theNumber;
+// }
+
+
+const addBtn = document.querySelector(".add");
+const minusBtn = document.querySelector(".minus");
+
+document.querySelector(".number").innerHTML = number;
+
+function showAndStore(number) {
+  document.querySelector(".number").innerHTML = number;
+  localStorage['theNumber'] = theNumber;
 }
 
+addBtn.addEventListener('click', function () {
+  theNumber++;
+  showAndStore(theNumber);
+})
+
+minusBtn.addEventListener('click', function () {
+  theNumber--;
+  showAndStore(theNumber);
+})
